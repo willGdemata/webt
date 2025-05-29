@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Homes - Venta de Casas Exclusivas</title>
+    <style>
+        /* Estilos CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #e74c3c;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #e74c3c;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            width: 100%;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .search-box {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            max-width: 800px;
+            margin: -50px auto 0;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-box h2 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .search-form input, .search-form select {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .search-form button {
+            grid-column: 1 / -1;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: #e74c3c;
+            bottom: 0;
+            left: 25%;
+        }
+        
+        .properties {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .property-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .property-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .property-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .property-card:hover .property-img img {
+            transform: scale(1.1);
+        }
+        
+        .property-info {
+            padding: 1.5rem;
+        }
+        
+        .property-info h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .property-info p {
+            margin-bottom: 1rem;
+            color: #7f8c8d;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature i {
+            margin-right: 0.3rem;
+            color: #e74c3c;
+        }
+        
+        .about {
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .agents {
+            background-color: #ecf0f1;
+        }
+        
+        .agent-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .agent-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .agent-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1rem;
+            border: 5px solid #e74c3c;
+        }
+        
+        .agent-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .agent-info h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .agent-info p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: #2c3e50;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #e74c3c;
+        }
+        
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #e74c3c;
+        }
+        
+        .copyright {
+            border-top: 1px solid #34495e;
+            padding-top: 1rem;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .search-box {
+                margin: 0 auto;
+                position: static;
+                margin-top: 1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">Luxury<span>Homes</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#propiedades">Propiedades</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#agentes">Agentes</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <h1>Encuentra tu hogar perfecto</h1>
+            <p>Descubre propiedades exclusivas en las mejores ubicaciones. Más de 10 años ayudando a nuestros clientes a encontrar su hogar ideal.</p>
+            <a href="#propiedades" class="btn">Ver propiedades</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="search-box">
+            <h2>Buscar propiedad</h2>
+            <form class="search-form">
+                <input type="text" placeholder="Ubicación">
+                <select>
+                    <option value="">Tipo de propiedad</option>
+                    <option value="casa">Casa</option>
+                    <option value="departamento">Departamento</option>
+                    <option value="terreno">Terreno</option>
+                    <option value="local">Local comercial</option>
+                </select>
+                <select>
+                    <option value="">Rango de precio</option>
+                    <option value="100000">$100,000 - $200,000</option>
+                    <option value="200000">$200,000 - $300,000</option>
+                    <option value="300000">$300,000 - $400,000</option>
+                    <option value="400000">$400,000+</option>
+                </select>
+                <select>
+                    <option value="">Habitaciones</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4+">4+</option>
+                </select>
+                <button type="submit" class="btn">Buscar</button>
+            </form>
+        </div>
+    </div>
+
+    <section id="propiedades" class="featured-properties">
+        <div class="container">
+            <div class="section-title">
+                <h2>Propiedades Destacadas</h2>
+            </div>
+            <div class="properties">
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Casa moderna">
+                    </div>
+                    <div class="property-info">
+                        <h3>Casa moderna en zona residencial</h3>
+                        <p>Av. Las Palmas 123, Ciudad Jardín</p>
+                        <div class="price">$350,000</div>
+                        <div class="features">
+                            <div class="feature"><i class="fas fa-bed"></i> 3</div>
+                            <div class="feature"><i class="fas fa-bath"></i> 2</div>
+                            <div class="feature"><i class="fas fa-ruler-combined"></i> 180m²</div>
+                        </div>
+                        <a href="#" class="btn">Ver detalles</a>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Departamento de lujo">
+                    </div>
+                    <div class="property-info">
+                        <h3>Departamento de lujo con vista al mar</h3>
+                        <p>Torre Marina, Piso 15, Zona Costera</p>
+                        <div class="price">$275,000</div>
+                        <div class="features">
+                            <div class="feature"><i class="fas fa-bed"></i> 2</div>
+                            <div class="feature"><i class="fas fa-bath"></i> 2</div>
+                            <div class="feature"><i class="fas fa-ruler-combined"></i> 120m²</div>
+                        </div>
+                        <a href="#" class="btn">Ver detalles</a>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Casa campestre">
+                    </div>
+                    <div class="property-info">
+                        <h3>Casa campestre con jardín</h3>
+                        <p>Calle Los Pinos 45, Valle Verde</p>
+                        <div class="price">$420,000</div>
+                        <div class="features">
+                            <div class="feature"><i class="fas fa-bed"></i> 4</div>
+                            <div class="feature"><i class="fas fa-bath"></i> 3</div>
+                            <div class="feature"><i class="fas fa-ruler-combined"></i> 250m²</div>
+                        </div>
+                        <a href="#" class="btn">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipo de Luxury Homes">
+                </div>
+                <div class="about-text">
+                    <h2>Sobre Nosotros</h2>
+                    <p>Luxury Homes es una empresa líder en el mercado inmobiliario, especializada en la compra, venta y renta de propiedades de alto valor. Nuestro equipo de profesionales cuenta con más de 10 años de experiencia en el sector.</p>
+                    <p>Nos enorgullecemos de ofrecer un servicio personalizado, adaptado a las necesidades específicas de cada cliente. Nuestra misión es ayudarte a encontrar el hogar perfecto para una familia y que se ajuste a tus sueños y presupuesto.</p>
+                    <a href="#contacto" class="btn">Contáctanos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="agentes" class="agents">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Agentes</h2>
+            </div>
+            <div class="agent-cards">
+                <div class="agent-card">
+                    <div class="agent-img">
+                        <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Agente 1">
+                    </div>
+                    <div class="agent-info">
+                        <h3>María González</h3>
+                        <p>Agente Senior</p>
+                        <p>Especialista en propiedades residenciales</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-img">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Agente 2">
+                    </div>
+                    <div class="agent-info">
+                        <h3>Carlos Mendoza</h3>
+                        <p>Agente Comercial</p>
+                        <p>Especialista en propiedades comerciales</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-img">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Agente 3">
+                    </div>
+                    <div class="agent-info">
+                        <h3>Laura Jiménez</h3>
+                        <p>Agente Junior</p>
+                        <p>Especialista en terrenos y lotes</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Principal 1234, Ciudad Guatemala</p>
+                    <p><i class="fas fa-phone"></i> +502 234 567 89</p>
+                    <p><i class="fas fa-envelope"></i> info@luxuryhomes.com.gt</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Viernes: 8:00 - 18:00</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Nombre" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="tel" placeholder="Teléfono">
+                        <textarea placeholder="Mensaje" required></textarea>
+                        <button type="submit" class="btn">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Luxury Homes</h3>
+                    <p>La mejor opción para encontrar tu hogar ideal. Servicio profesional y personalizado con la mejor comodidad.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#propiedades">Propiedades</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#agentes">Agentes</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#">Compra de casas</a></li>
+                        <li><a href="#">Venta de propiedades</a></li>
+                        <li><a href="#">Renta de departamentos</a></li>
+                        <li><a href="#">Asesoría legal</a></li>
+                        <li><a href="#">Tasaciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Redes sociales</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Luxury Homes. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
